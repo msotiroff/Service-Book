@@ -78,6 +78,7 @@ namespace ServiceBook.UI.Grids
             updateUserWindow.Title = $"Update user \"{user.FullName}\"";
             updateUserWindow.SetUserData(user);
             updateUserWindow.ShowDialog();
+
             await this.SetGridDataAsync();
         }
 

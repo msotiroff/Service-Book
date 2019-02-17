@@ -86,11 +86,13 @@ namespace ServiceBook.UI.Windows
             }
         }
 
-        private void BtnAddVehicle_Clicked(object sender, RoutedEventArgs e)
+        private async void BtnAddVehicle_Clicked(object sender, RoutedEventArgs e)
         {
             var addVehicleWindow = this.serviceProvider
                 .GetRequiredService<AddOrUpdateVehicleWindow>();
             addVehicleWindow.ShowDialog();
+
+            await this.VehiclesGrid.SetGridDataAsync();
         }
 
         private async void BtnAddUser_Clicked(object sender, RoutedEventArgs e)

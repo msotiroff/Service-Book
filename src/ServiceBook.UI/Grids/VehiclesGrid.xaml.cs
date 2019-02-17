@@ -81,6 +81,8 @@ namespace ServiceBook.UI.Grids
             updateVehicleWindow.Title = $"Update vehicle \"{vehicle.RegistrationPlate}\"";
             updateVehicleWindow.SetVehicleData(vehicle);
             updateVehicleWindow.ShowDialog();
+
+            await this.SetGridDataAsync();
         }
 
         private void BtnDetailsVehicle_Clicked(object sender, RoutedEventArgs e)
