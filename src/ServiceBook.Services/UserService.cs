@@ -1,13 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
-using ServiceBook.DAL.Interfaces;
-using ServiceBook.Extensions;
+﻿using ServiceBook.DAL.Interfaces;
 using ServiceBook.Models.DatabaseModels;
 using ServiceBook.Models.Enums;
 using ServiceBook.Models.Interfaces;
 using ServiceBook.Services.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace ServiceBook.Services

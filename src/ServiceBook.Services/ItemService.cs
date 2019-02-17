@@ -1,7 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
-using ServiceBook.DAL.Interfaces;
+﻿using ServiceBook.DAL.Interfaces;
 using ServiceBook.Models.DatabaseModels;
-using ServiceBook.Models.Enums;
 using ServiceBook.Models.Interfaces;
 using ServiceBook.Models.ViewModels.ServiceItem;
 using ServiceBook.Services.Interfaces;
