@@ -5,6 +5,7 @@ using ServiceBook.Services.Interfaces;
 using ServiceBook.UI.Windows.ServiceItem;
 using System;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -31,7 +32,7 @@ namespace ServiceBook.UI.Windows.ServiceIntervention
             this.serviceProvider = serviceProvider;
         }
 
-        internal async void SetRequiredDataAsync(string interventionId)
+        internal async Task SetRequiredDataAsync(string interventionId)
         {
             this.currentIntervention = await this.interventionService.GetAsync(interventionId);
             var allItems = await this.itemService
@@ -42,7 +43,7 @@ namespace ServiceBook.UI.Windows.ServiceIntervention
             this.txtTotalCost.Text = total.ToString();
         }
 
-        private void BtnAddItem_Clicked(object sender, RoutedEventArgs e)
+        private async void BtnAddItem_Clicked(object sender, RoutedEventArgs e)
         {
             var addItemWindow = this.serviceProvider
                 .GetRequiredService<AddOrUpdateServiceItemWindow>();
@@ -51,10 +52,10 @@ namespace ServiceBook.UI.Windows.ServiceIntervention
 
             addItemWindow.ShowDialog();
 
-            this.SetRequiredDataAsync(this.currentIntervention.Id);
+            await this.SetRequiredDataAsync(this.currentIntervention.Id);
         }
 
-        private void BtnEditItem_Clicked(object sender, RoutedEventArgs e)
+        private async void BtnEditItem_Clicked(object sender, RoutedEventArgs e)
         {
             var item = (ServiceItemListViewModel)((Button)sender).DataContext;
             var editItemWindow = this.serviceProvider
@@ -64,10 +65,10 @@ namespace ServiceBook.UI.Windows.ServiceIntervention
 
             editItemWindow.ShowDialog();
 
-            this.SetRequiredDataAsync(this.currentIntervention.Id);
+            await this.SetRequiredDataAsync(this.currentIntervention.Id);
         }
 
-        private void BtnDeleteItem_Clicked(object sender, RoutedEventArgs e)
+        private async void BtnDeleteItem_Clicked(object sender, RoutedEventArgs e)
         {
             var item = (ServiceItemListViewModel)((Button)sender).DataContext;
             var questionBox = new QuestionWindow(
@@ -80,8 +81,8 @@ namespace ServiceBook.UI.Windows.ServiceIntervention
                 return;
             }
 
-            this.itemService.RemoveAsync(item.Id);
-            this.SetRequiredDataAsync(this.currentIntervention.Id);
+            await this.itemService.RemoveAsync(item.Id);
+            await this.SetRequiredDataAsync(this.currentIntervention.Id);
         }
     }
 }

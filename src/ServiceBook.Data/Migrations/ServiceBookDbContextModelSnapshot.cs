@@ -112,14 +112,16 @@ namespace ServiceBook.Data.Migrations
                 {
                     b.HasOne("ServiceBook.Models.DatabaseModels.Vehicle", "Vehicle")
                         .WithMany("ServiceInterventions")
-                        .HasForeignKey("VehicleId");
+                        .HasForeignKey("VehicleId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("ServiceBook.Models.DatabaseModels.ServiceItem", b =>
                 {
                     b.HasOne("ServiceBook.Models.DatabaseModels.ServiceIntervention", "ServiceIntervention")
                         .WithMany("ServiceItems")
-                        .HasForeignKey("ServiceInterventionId");
+                        .HasForeignKey("ServiceInterventionId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("ServiceBook.Models.DatabaseModels.Vehicle", b =>

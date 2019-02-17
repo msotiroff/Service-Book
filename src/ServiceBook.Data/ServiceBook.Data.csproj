@@ -150,9 +150,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Migrations\20190210152815_Initial.cs" />
-    <Compile Include="Migrations\20190210152815_Initial.designer.cs">
-      <DependentUpon>20190210152815_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\20190217194607_Initial.cs" />
+    <Compile Include="Migrations\20190217194607_Initial.designer.cs">
+      <DependentUpon>20190217194607_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\ServiceBookDbContextModelSnapshot.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

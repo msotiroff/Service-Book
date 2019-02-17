@@ -4,6 +4,7 @@ using ServiceBook.Services.Interfaces;
 using ServiceBook.UI.Windows.ServiceIntervention;
 using System;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -31,7 +32,7 @@ namespace ServiceBook.UI.Windows.Vehicle
             this.interventionService = interventionService;
         }
 
-        public async void SetRequiredDataAsync(string vehicleId)
+        public async Task SetRequiredDataAsync(string vehicleId)
         {
             this.vehicleId = vehicleId;
 
@@ -42,7 +43,7 @@ namespace ServiceBook.UI.Windows.Vehicle
             this.InterventionsGrid.ItemsSource = interventions;
         }
 
-        private void BtnEditIntervention_Clicked(object sender, RoutedEventArgs args)
+        private async void BtnEditIntervention_Clicked(object sender, RoutedEventArgs args)
         {
             var intervention = (ServiceInterventionListViewModel)((Button)sender).DataContext;
 
@@ -52,10 +53,10 @@ namespace ServiceBook.UI.Windows.Vehicle
             updateInterventionWindow.SetRequiredDataAsync(this.vehicleId, intervention.Id);
             updateInterventionWindow.ShowDialog();
 
-            this.SetRequiredDataAsync(this.vehicleId);
+            await this.SetRequiredDataAsync(this.vehicleId);
         }
 
-        private void BtnDeleteIntervention_Clicked(object sender, RoutedEventArgs args)
+        private async void BtnDeleteIntervention_Clicked(object sender, RoutedEventArgs args)
         {
             var intervention = (ServiceInterventionListViewModel)((Button)sender).DataContext;
             var questionBox = new QuestionWindow(
@@ -68,23 +69,24 @@ namespace ServiceBook.UI.Windows.Vehicle
                 return;
             }
 
-            this.interventionService.RemoveAsync(intervention.Id);
-            this.SetRequiredDataAsync(this.vehicleId);
+            await this.interventionService.RemoveAsync(intervention.Id);
+            await this.SetRequiredDataAsync(this.vehicleId);
         }
 
-        private void BtnDetailsIntervention_Clicked(object sender, RoutedEventArgs args)
+        private async void BtnDetailsIntervention_Clicked(object sender, RoutedEventArgs args)
         {
             var intervention = (ServiceInterventionListViewModel)((Button)sender).DataContext;
             var interventionDetailsWindow = this.serviceProvider
                 .GetRequiredService<InterventionDetailsWindow>();
-            interventionDetailsWindow.SetRequiredDataAsync(intervention.Id);
+
+            await interventionDetailsWindow.SetRequiredDataAsync(intervention.Id);
 
             interventionDetailsWindow.ShowDialog();
 
-            this.SetRequiredDataAsync(this.vehicleId);
+            await this.SetRequiredDataAsync(this.vehicleId);
         }
 
-        private void BtnAddIntervention_Clicked(object sender, RoutedEventArgs e)
+        private async void BtnAddIntervention_Clicked(object sender, RoutedEventArgs e)
         {
             var addInterventionWindow = this.serviceProvider
                 .GetRequiredService<AddOrUpdateServiceInterventionWindow>();
@@ -92,7 +94,7 @@ namespace ServiceBook.UI.Windows.Vehicle
             addInterventionWindow.SetRequiredDataAsync(this.vehicleId);
             addInterventionWindow.ShowDialog();
 
-            this.SetRequiredDataAsync(this.vehicleId);
+            await this.SetRequiredDataAsync(this.vehicleId);
         }
     }
 }

@@ -153,6 +153,10 @@ namespace ServiceBook.UI.Windows
                     filePicker.FileName, DbConstants.DatabaseFileFullPath, overwrite: true);
             })
             .Wait();
+
+            this.UsersGrid.SetGridDataAsync().Wait();
+
+            this.VehiclesGrid.SetGridDataAsync().Wait();
         }
     }
 }

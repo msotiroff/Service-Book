@@ -16,8 +16,9 @@ namespace ServiceBook.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder builder)
         {
-            builder
-                .UseSqlite(DbConstants.SQLiteConnectionString);
+            builder.UseSqlite(
+                DbConstants.SQLiteConnectionString, 
+                options => options.SuppressForeignKeyEnforcement());
         }
 
         protected override void OnModelCreating(ModelBuilder builder)
@@ -28,7 +29,8 @@ namespace ServiceBook.Data
                 entity
                     .HasMany(u => u.Vehicles)
                     .WithOne(v => v.Owner)
-                    .HasForeignKey(v => v.OwnerId);
+                    .HasForeignKey(v => v.OwnerId)
+                    .OnDelete(DeleteBehavior.Cascade);
             });
 
             builder.Entity<Vehicle>(entity =>
@@ -37,7 +39,8 @@ namespace ServiceBook.Data
                 entity
                     .HasMany(v => v.ServiceInterventions)
                     .WithOne(si => si.Vehicle)
-                    .HasForeignKey(si => si.VehicleId);
+                    .HasForeignKey(si => si.VehicleId)
+                    .OnDelete(DeleteBehavior.Cascade);
             });
 
             builder.Entity<ServiceIntervention>(entity =>
@@ -46,7 +49,8 @@ namespace ServiceBook.Data
                 entity
                     .HasMany(si => si.ServiceItems)
                     .WithOne(sit => sit.ServiceIntervention)
-                    .HasForeignKey(sit => sit.ServiceInterventionId);
+                    .HasForeignKey(sit => sit.ServiceInterventionId)
+                    .OnDelete(DeleteBehavior.Cascade);
             });
 
             base.OnModelCreating(builder);

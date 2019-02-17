@@ -30,14 +30,16 @@ namespace ServiceBook.UI.Windows.User
             this.FillVehiclesAsync();
         }
 
-        private void BtnDetailsVehicle_Clicked(object sender, RoutedEventArgs e)
+        private async void BtnDetailsVehicle_Clicked(object sender, RoutedEventArgs e)
         {
             var vehicle = (VehicleListViewModel)((Button)sender).DataContext;
             var vehicleDetailsWindow = this.serviceProvider
                 .GetRequiredService<VehicleDetailsWindow>();
 
             vehicleDetailsWindow.Title = $"Details for vehicle \"{vehicle.RegistrationPlate}\"";
-            vehicleDetailsWindow.SetRequiredDataAsync(vehicle.Id);
+
+            await vehicleDetailsWindow.SetRequiredDataAsync(vehicle.Id);
+
             vehicleDetailsWindow.ShowDialog();
         }
 
