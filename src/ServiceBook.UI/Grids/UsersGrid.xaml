@@ -1,0 +1,31 @@
+﻿<UserControl x:Class="ServiceBook.UI.Grids.UsersGrid"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             Height="Auto" Width="Auto">
+    <DataGrid Name="DataGrid" Sorting="UsersGrid_Sorting" ScrollViewer.ScrollChanged="UsersGrid_ScrollChanged" IsReadOnly="True" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" CanUserResizeColumns="False" CanUserReorderColumns="False">
+        <DataGrid.Columns>
+            <DataGridTextColumn SortMemberPath="Email" Width="200" Header="Email" Binding="{Binding Email}" />
+            <DataGridTextColumn SortMemberPath="FirstName" Width="200" Header="First name" Binding="{Binding FirstName}" />
+            <DataGridTextColumn SortMemberPath="LastName" Width="200" Header="Last name" Binding="{Binding LastName}" />
+            <DataGridTextColumn SortMemberPath="PhoneNumber" Width="190" Header="Phone number" Binding="{Binding PhoneNumber}" />
+            <DataGridTextColumn SortMemberPath="DateCreated" Width="150" Header="Date created" Binding="{Binding DateCreated}" />
+            <DataGridTemplateColumn>
+                <DataGridTemplateColumn.CellTemplate>
+                    <DataTemplate>
+                        <Button Name="btnEditUser" Content="Edit" Click="BtnEditUser_Clicked"></Button>
+                    </DataTemplate>
+                </DataGridTemplateColumn.CellTemplate>
+            </DataGridTemplateColumn>
+            <DataGridTemplateColumn>
+                <DataGridTemplateColumn.CellTemplate>
+                    <DataTemplate>
+                        <Button Name="btnDetailsUser" Content="Details" Click="BtnDetailsUser_Clicked"></Button>
+                    </DataTemplate>
+                </DataGridTemplateColumn.CellTemplate>
+            </DataGridTemplateColumn>
+        </DataGrid.Columns>
+    </DataGrid>
+</UserControl>

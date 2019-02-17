@@ -1,0 +1,47 @@
+﻿<Window x:Class="ServiceBook.UI.Windows.Vehicle.VehicleDetailsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ServiceBook.UI"
+        mc:Ignorable="d"
+        Height="650" Width="1100"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="CanMinimize" WindowStyle="ThreeDBorderWindow">
+    <Grid>
+        <Label Name="lblInnerTitle" Foreground="#6438B1" FontSize="30" FontWeight="Bold" HorizontalContentAlignment="Center" Content="Service interventions" VerticalAlignment="Top" HorizontalAlignment="Center" Height="50" Width="400" Margin="0,5,0,0" />
+        <Label Foreground="#6438B1" FontSize="22" FontWeight="Bold" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Content="Total spent:" VerticalAlignment="Top" HorizontalAlignment="Left" Height="40" Width="130" Margin="5,35,0,0" />
+        <TextBlock Name="txtTotalSum" Foreground="#6438B1" FontSize="22" FontWeight="Bold" VerticalAlignment="Top" HorizontalAlignment="Left" Height="35" Width="130" Margin="140,40,0,0" />
+        <Button Name="btnAddIntervention" FontSize="18" FontWeight="Bold" HorizontalContentAlignment="Center" Content="Add new" VerticalAlignment="Top" HorizontalAlignment="Left" Height="35" Width="120" Margin="920, 17,0,0" Click="BtnAddIntervention_Clicked" />
+        <DataGrid Name="InterventionsGrid" IsReadOnly="True" AutoGenerateColumns="False" Width="1000" Height="500" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="45,80,0,0">
+            <DataGrid.Columns>
+                <DataGridTextColumn Width="120" Header="Date" Binding="{Binding Date}" />
+                <DataGridTextColumn Width="120" Header="Mileage" Binding="{Binding Mileage}" />
+                <DataGridTextColumn Width="350" Header="Description" Binding="{Binding ShortDescription}" />
+                <DataGridTextColumn Width="110" Header="Total cost" Binding="{Binding TotalCost}" />
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Name="btnDetailsIntervention" Content="Details" Click="BtnDetailsIntervention_Clicked"></Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Name="btnEditIntervention" Content="Edit" Click="BtnEditIntervention_Clicked"></Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Name="btnDeleteIntervention" Content="Delete" Click="BtnDeleteIntervention_Clicked"></Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>

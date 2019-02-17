@@ -1,0 +1,41 @@
+﻿<Window x:Class="ServiceBook.UI.Windows.ServiceIntervention.InterventionDetailsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ServiceBook.UI.Windows.ServiceIntervention"
+        mc:Ignorable="d"
+        Height="650" Width="900"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="CanMinimize" WindowStyle="ThreeDBorderWindow">
+    <Grid>
+        <Label Name="lblInnerTitle" Foreground="#6438B1" FontSize="30" FontWeight="Bold" HorizontalContentAlignment="Center" Content="Details:" VerticalAlignment="Top" HorizontalAlignment="Center" Height="50" Width="400" Margin="0,5,0,0" />
+        <Button Name="btnAddItem" FontSize="18" FontWeight="Bold" HorizontalContentAlignment="Center" Content="Add new" VerticalAlignment="Top" HorizontalAlignment="Left" Height="35" Width="120" Margin="720, 17,0,0" Click="BtnAddItem_Clicked" />
+        <TextBlock Name="txtDescription" Foreground="#6438B1" FontSize="14" TextWrapping="Wrap" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="45,60,0,0" Height="53" Width="795" />
+        <DataGrid IsReadOnly="True" Name="ItemsGrid" AutoGenerateColumns="False" Width="800" Height="400" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="45,130,0,0">
+            <DataGrid.Columns>
+                <DataGridTextColumn Width="200" Header="Part name" Binding="{Binding Part}" />
+                <DataGridTextColumn Width="120" Header="Price per unit" Binding="{Binding PricePerUnit}" />
+                <DataGridTextColumn Width="100" Header="Units" Binding="{Binding Units}" />
+                <DataGridTextColumn Width="150" Header="Cost" Binding="{Binding TotalCost}" />
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Name="btnEditIntervention" Content="Edit" Click="BtnEditItem_Clicked"></Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Name="btnDeleteIntervention" Content="Delete" Click="BtnDeleteItem_Clicked"></Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <TextBlock Text="Total:" FontSize="32" FontWeight="Bold" Foreground="#6438B1" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Height="50" Margin="430,550,0,0"/>
+        <TextBlock Name="txtTotalCost" FontSize="32" FontWeight="Bold" Foreground="#6438B1" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Height="50" Margin="550,551,0,0"/>
+    </Grid>
+</Window>

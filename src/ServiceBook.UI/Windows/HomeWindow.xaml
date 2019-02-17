@@ -1,0 +1,126 @@
+﻿<Window x:Class="ServiceBook.UI.Windows.HomeWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ServiceBook.UI"
+        xmlns:grids="clr-namespace:ServiceBook.UI.Grids"
+        mc:Ignorable="d"
+        Title="Service Book - Home" Height="650" Width="1200"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:fa="http://schemas.fontawesome.io/icons/"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="CanMinimize" WindowStyle="ThreeDBorderWindow">
+    <Grid>
+        <WrapPanel HorizontalAlignment="Left" VerticalAlignment="Top" Width="850" Height="60">
+            <Button 
+                Name="btnAddVehicle" 
+                Click="BtnAddVehicle_Clicked" 
+                HorizontalAlignment="Left" 
+                VerticalAlignment="Top" 
+                Content="Create vehicle" 
+                Width="140" 
+                Margin="30,15,0,0">
+            </Button>
+            <Button 
+                Name="btnAddUser" 
+                Click="BtnAddUser_Clicked" 
+                HorizontalAlignment="Left" 
+                VerticalAlignment="Top" 
+                Content="Create user" 
+                Width="130" 
+                Margin="5,15,0,0">
+            </Button>
+            <Button 
+                Name="btnBackUp" 
+                Click="BtnBackUp_Clicked" 
+                HorizontalAlignment="Left" 
+                VerticalAlignment="Top" 
+                Content="Back up database" 
+                Width="150" 
+                Margin="5,15,0,0">
+            </Button>
+            <Button 
+                Name="btnRestore" 
+                Click="BtnRestore_Clicked" 
+                HorizontalAlignment="Left" 
+                VerticalAlignment="Top" 
+                Content="Restore database" 
+                Width="150" 
+                Margin="5,15,0,0">
+            </Button>
+        </WrapPanel>
+        <Label 
+            FontSize="24" 
+            FontWeight="Bold" 
+            Foreground="#6438B1" 
+            HorizontalAlignment="Left" 
+            VerticalAlignment="Top" 
+            HorizontalContentAlignment="Right" 
+            VerticalContentAlignment="Center" 
+            Content="Search:" 
+            Height="53" 
+            Width="138" 
+            Margin="430,47,0,0">
+        </Label>
+        <TextBox 
+            Name="txtSearch" 
+            KeyUp="TxtSearch_KeyUp" 
+            FontSize="24" 
+            FontWeight="Bold" 
+            Foreground="#6438B1" 
+            HorizontalAlignment="Left" 
+            VerticalAlignment="Top" 
+            HorizontalContentAlignment="Left" 
+            VerticalContentAlignment="Center" 
+            Height="53" 
+            Width="282" 
+            Margin="580,47,0,0">
+        </TextBox>
+        <Label 
+            FontSize="32" 
+            FontWeight="Bold" 
+            Foreground="#6438B1" 
+            HorizontalAlignment="Left" 
+            VerticalAlignment="Top" 
+            HorizontalContentAlignment="Right" 
+            VerticalContentAlignment="Center" 
+            Content="Service Book" 
+            Height="53" 
+            Width="223" 
+            Margin="841,16,0,0">
+        </Label>
+        <Image 
+            Source="..\Files\Images\purple-book.png" 
+            Margin="1072,5,30.6,529" />
+        <TabControl Margin="20,80,20,20">
+            <TabItem 
+                Name="tabItemVehicles" 
+                MouseLeftButtonUp="TabItem_Changed" 
+                Height="30" 
+                Width="200" 
+                Header="Vehicles" 
+                FontSize="18" 
+                FontWeight="Bold">
+                    <grids:VehiclesGrid x:Name="VehiclesGrid" />
+            </TabItem>
+            <TabItem 
+                Name="tabItemUsers" 
+                MouseLeftButtonUp="TabItem_Changed" 
+                Height="30" 
+                Width="200" 
+                Header="Users" 
+                FontSize="18" 
+                FontWeight="Bold">
+                    <grids:UsersGrid x:Name="UsersGrid" />
+            </TabItem>
+        </TabControl>
+        <fa:ImageAwesome 
+            Name="imgLoading" 
+            Icon="Refresh" 
+            Spin="True" 
+            Visibility="Hidden" 
+            Height="70" 
+            Width="70" />
+    </Grid>
+</Window>

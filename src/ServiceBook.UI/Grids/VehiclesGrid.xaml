@@ -1,0 +1,31 @@
+﻿<UserControl x:Class="ServiceBook.UI.Grids.VehiclesGrid"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d" 
+             Height="Auto" Width="Auto">
+    <DataGrid Name="DataGrid" Sorting="VehiclesGrid_Sorting" ScrollViewer.ScrollChanged="VehiclesGrid_ScrollChanged" AutoGenerateColumns="False" IsReadOnly="True">
+        <DataGrid.Columns>
+            <DataGridTextColumn SortMemberPath="RegistrationPlate" Width="150" Header="Registration plate" Binding="{Binding RegistrationPlate}" />
+            <DataGridTextColumn SortMemberPath="Make" Width="190" Header="Make" Binding="{Binding Make}" />
+            <DataGridTextColumn SortMemberPath="Model" Width="190" Header="Model" Binding="{Binding Model}" />
+            <DataGridTextColumn CanUserSort="False" Width="200" Header="Exact model name" Binding="{Binding ExactModelName}" />
+            <DataGridTextColumn CanUserSort="False" Width="200" Header="Owner" Binding="{Binding OwnerFullName}" />
+            <DataGridTemplateColumn>
+                <DataGridTemplateColumn.CellTemplate>
+                    <DataTemplate>
+                        <Button Name="btnEditVehicle" Content="Edit" Click="BtnEditVehicle_Clicked"></Button>
+                    </DataTemplate>
+                </DataGridTemplateColumn.CellTemplate>
+            </DataGridTemplateColumn>
+            <DataGridTemplateColumn>
+                <DataGridTemplateColumn.CellTemplate>
+                    <DataTemplate>
+                        <Button Name="btnDetailsVehicle" Content="Details" Click="BtnDetailsVehicle_Clicked"></Button>
+                    </DataTemplate>
+                </DataGridTemplateColumn.CellTemplate>
+            </DataGridTemplateColumn>
+        </DataGrid.Columns>
+    </DataGrid>
+</UserControl>

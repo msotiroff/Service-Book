@@ -1,0 +1,23 @@
+﻿<Window x:Class="ServiceBook.UI.Windows.ServiceIntervention.AddOrUpdateServiceInterventionWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Title="Add a new service intervention" Height="450" Width="650" ResizeMode="CanMinimize">
+    <Grid>
+        <Label Content="Date:" HorizontalContentAlignment="Right" FontSize="18" FontWeight="Bold" Foreground="#6438B1" Width="200" Height="35" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20,20,0,0" />
+        <Label Content="Mileage:" HorizontalContentAlignment="Right" FontSize="18" FontWeight="Bold" Foreground="#6438B1" Width="200" Height="35" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20,60,0,0" />
+        <Label Content="Next service date:" HorizontalContentAlignment="Right" FontSize="18" FontWeight="Bold" Foreground="#6438B1" Width="200" Height="35" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20,100,0,0" />
+        <Label Content="Description:" HorizontalContentAlignment="Right" FontSize="18" FontWeight="Bold" Foreground="#6438B1" Width="200" Height="35" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20,140,0,0" />
+
+        <DatePicker Foreground="#6438B1" FontSize="18" Name="datePickerCurrentDate" Width="350" Height="35" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Left" Margin="230,20,0,0" />
+        <TextBox Foreground="#6438B1" FontSize="18" Name="txtMileage" Width="350" Height="35" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Left" Margin="230,60,0,0" />
+        <DatePicker Foreground="#6438B1" FontSize="18" Name="datePickerNextDate" Width="350" Height="35" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Left" Margin="230,100,0,0" />
+        <TextBox Foreground="#6438B1" FontSize="18" Name="txtDescription" TextWrapping="Wrap" Width="350" Height="140" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Left" Margin="230,140,0,0" />
+
+        <Button Name="btnClear" Click="BtnClear_Click" Content="Clear" FontSize="22" Width="180" Height="50" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="80,320,0,0" />
+        <Button Name="btnSubmit" Click="BtnSubmit_Click" Content="Commit" FontSize="22" Width="180" Height="50" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="370,320,0,0" />
+    </Grid>
+</Window>
