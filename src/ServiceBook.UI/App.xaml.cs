@@ -29,6 +29,7 @@ namespace ServiceBook.UI
             IServiceProvider serviceProvider = this.BuildServiceProvider();
 
             this.EnsureDatabaseUpToDate(serviceProvider);
+
             //this.SeedDatabase(serviceProvider);
 
             Current.Resources[UIConstants.ServiceProviderResourceKey] = serviceProvider;

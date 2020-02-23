@@ -1,11 +1,10 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
-using ServiceBook.Config;
+﻿using Microsoft.EntityFrameworkCore;
 using ServiceBook.DAL.Interfaces;
 using ServiceBook.Models.DatabaseModels;
 using ServiceBook.Models.Enums;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace ServiceBook.DAL
 {
